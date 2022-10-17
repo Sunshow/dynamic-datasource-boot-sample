@@ -12,6 +12,8 @@ public class UserServiceImpl implements UserService {
 
     private final UserDAO userDAO;
 
+    private final AdminUserDAO adminUserDAO;
+
     @Override
     public Optional<User> getUserById(Long id) {
         return userDAO.findById(id);
@@ -25,4 +27,11 @@ public class UserServiceImpl implements UserService {
         return userDAO.save(user);
     }
 
+    @Override
+    public AdminUser createAdminUserByName(String name) {
+        AdminUser user = new AdminUser();
+        user.setName(name);
+        user.setAddress("address");
+        return adminUserDAO.save(user);
+    }
 }

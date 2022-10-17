@@ -1,26 +1,44 @@
 # dynamic-datasource-boot-sample
 
 ```mysql
-CREATE DATABASE  test_0;
-CREATE DATABASE  test_1;
-CREATE DATABASE  test_2;
+CREATE DATABASE test_0;
+CREATE DATABASE test_1;
+CREATE DATABASE test_2;
 
-CREATE TABLE `test_0`.`t_user`  (
-                                 `id` int(0) NOT NULL AUTO_INCREMENT,
-                                 `name` varchar(255) NOT NULL DEFAULT '',
-                                 PRIMARY KEY (`id`)
+CREATE TABLE `test_0`.`hibernate_sequences`
+(
+    `sequence_name` varchar(255) DEFAULT NULL,
+    `next_val`      int(11)      DEFAULT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
+CREATE TABLE `test_0`.`t_user`
+(
+    `id`   int(0)       NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL DEFAULT '',
+    PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
-CREATE TABLE `test_1`.`t_user`  (
-                                    `id` int(0) NOT NULL AUTO_INCREMENT,
-                                    `name` varchar(255) NOT NULL DEFAULT '',
-                                    PRIMARY KEY (`id`)
+CREATE TABLE `test_0`.`t_admin`
+(
+    `id`      int(0)       NOT NULL,
+    `name`    varchar(255) NOT NULL DEFAULT '',
+    `address` varchar(255) NOT NULL DEFAULT '',
+    PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
-CREATE TABLE `test_2`.`t_user`  (
-                                    `id` int(0) NOT NULL AUTO_INCREMENT,
-                                    `name` varchar(255) NOT NULL DEFAULT '',
-                                    PRIMARY KEY (`id`)
+CREATE TABLE `test_1`.`t_user`
+(
+    `id`   int(0)       NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL DEFAULT '',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+CREATE TABLE `test_2`.`t_user`
+(
+    `id`   int(0)       NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL DEFAULT '',
+    PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 ```
 

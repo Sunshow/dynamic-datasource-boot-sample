@@ -8,4 +8,6 @@ public interface UserService {
 
     User createUserByName(String name);
 
+    AdminUser createAdminUserByName(String name);
+
 }

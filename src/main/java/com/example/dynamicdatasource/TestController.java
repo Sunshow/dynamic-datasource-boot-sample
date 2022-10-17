@@ -5,8 +5,6 @@ import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
 import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +29,11 @@ public class TestController {
     @GetMapping("/get")
     public User get() {
         return userService.getUserById(1L).orElse(new User());
+    }
+
+    @GetMapping("/createAdmin")
+    public User createAdmin() {
+        return userService.createAdminUserByName("admin");
     }
 
     @GetMapping("/datasource/add1")
