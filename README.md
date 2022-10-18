@@ -47,6 +47,10 @@ curl -H 'content-type: application/json, charset=utf-8' 'http://localhost:8080/c
 
 curl -H 'content-type: application/json, charset=utf-8' 'http://localhost:8080/get'
 
+curl -H 'content-type: application/json, charset=utf-8' 'http://localhost:8080/createAdmin'
+
+curl -H 'content-type: application/json, charset=utf-8' 'http://localhost:8080/getAdmin'
+
 curl -H 'content-type: application/json, charset=utf-8' 'http://localhost:8080/datasource/add1'
 
 curl -H 'content-type: application/json, charset=utf-8' 'http://localhost:8080/datasource/add2'

@@ -10,4 +10,6 @@ public interface UserService {
 
     AdminUser createAdminUserByName(String name);
 
+    Optional<AdminUser> getAdminUserByIdForUpdate(Long id);
+
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.sql.DataSource;
+import java.util.Optional;
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -32,8 +33,13 @@ public class TestController {
     }
 
     @GetMapping("/createAdmin")
-    public User createAdmin() {
+    public AdminUser createAdmin() {
         return userService.createAdminUserByName("admin");
+    }
+
+    @GetMapping("/getAdmin")
+    public Optional<AdminUser> getAdmin() {
+        return userService.getAdminUserByIdForUpdate(2L);
     }
 
     @GetMapping("/datasource/add1")
