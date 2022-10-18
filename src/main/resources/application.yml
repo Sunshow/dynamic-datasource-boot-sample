@@ -19,3 +19,8 @@ spring:
           url: jdbc:mysql://127.0.0.1:3306/test_0?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useLegacyDatetimeCode=false&useSSL=false
           username: root
           password: 123456
+  profiles:
+    active: local
+logging:
+  level:
+    root: info

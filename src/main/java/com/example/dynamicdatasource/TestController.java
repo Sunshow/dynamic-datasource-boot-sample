@@ -1,10 +1,14 @@
 package com.example.dynamicdatasource;
 
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.LoggerContext;
 import com.baomidou.dynamic.datasource.DynamicRoutingDataSource;
 import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
 import com.baomidou.dynamic.datasource.toolkit.DynamicDataSourceContextHolder;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,15 +16,37 @@ import javax.sql.DataSource;
 import java.util.Optional;
 import java.util.Set;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 public class TestController {
+
+    private final static LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
 
     private final UserService userService;
 
     private final DataSource dataSource;
 
     private final DefaultDataSourceCreator dataSourceCreator;
+
+    private void printlog() {
+        log.trace("trace");
+        log.debug("debug");
+        log.info("info");
+        log.warn("warn");
+        log.error("error");
+    }
+
+    @GetMapping("/log")
+    public void log() {
+        printlog();
+        loggerContext.getLogger("com.example.dynamicdatasource").setLevel(Level.TRACE);
+        printlog();
+        loggerContext.getLogger("com.example").setLevel(Level.ERROR);
+        printlog();
+        ((ch.qos.logback.classic.Logger) log).setLevel(Level.ERROR);
+        printlog();
+    }
 
     @GetMapping("/create")
     public User create() {
